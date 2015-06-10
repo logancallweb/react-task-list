@@ -1,0 +1,98 @@
+[
+    {
+        "name": "All text free from spelling errors?",
+        "status": "Incomplete"
+    },
+    {
+        "name": "Content has been placed consistently?",
+        "status": "Incomplete"
+    },
+    {
+        "name": "Page & Content formatting has been tested?",
+        "status": "Incomplete"
+    },
+    {
+        "name": "Meta data has been included and is appropriate?",
+        "status": "Incomplete"
+    },
+    {
+        "name": "Page titles are descriptive and SEO friendly?",
+        "status": "Incomplete"
+    },
+    {
+        "name": "Title attributes are appropriate and SEO friendly?",
+        "status": "Incomplete"
+    },
+    {
+        "name": "Favicon has been created and displays correctly?",
+        "status": "Incomplete"
+    },
+    {
+        "name": "Footer includes copyright and link to site creator?",
+        "status": "Incomplete"
+    },
+    {
+        "name": "XML sitemap has been generated?",
+        "status": "Incomplete"
+    },
+    {
+        "name": "HTML has passed validation?",
+        "status": "Incomplete"
+    },
+    {
+        "name": "CSS has passed validation?",
+        "status": "Incomplete"
+    },
+    {
+        "name": "There are no broken links?",
+        "status": "Incomplete"
+    },
+    {
+        "name": "Javascript is error free?",
+        "status": "Incomplete"
+    },
+    {
+        "name": "Displays & functions correctly in IE9 & 10?",
+        "status": "Incomplete"
+    },
+    {
+        "name": "Displays & functions correctly in Firefox (Mac & PC)?",
+        "status": "Incomplete"
+    },
+    {
+        "name": "Displays & functions correctly in Chrome (Mac & PC)?",
+        "status": "Incomplete"
+    },
+    {
+        "name": "Displays & functions correctly in Safari (Mac & PC)?",
+        "status": "Incomplete"
+    },
+    {
+        "name": "Displays & functions correctly in Opera (Mac & PC)?",
+        "status": "Incomplete"
+    },
+    {
+        "name": "Displays & functions correctly on all screen sizes?",
+        "status": "Incomplete"
+    },
+    {
+        "name": "Forms have been tested and processed correctly?",
+        "status": "Incomplete"
+    },
+    {
+        "name": "Required form fields have been tested?",
+        "status": "Incomplete"
+    },
+    {
+        "name": "Forms send to correct recipient?",
+        "status": "Incomplete"
+    },
+    {
+        "name": "Web statistics package installed and operational?",
+        "status": "Incomplete"
+    },
+    {
+        "name": "404 page exists and informative?",
+        "status": "Incomplete"
+    }
+]

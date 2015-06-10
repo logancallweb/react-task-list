@@ -1,0 +1,98 @@
+[
+    {
+        "name": "All text free from spelling errors?",
+        "status": "false"
+    },
+    {
+        "name": "Content has been placed consistently?",
+        "status": "false"
+    },
+    {
+        "name": "Page & Content formatting has been tested?",
+        "status": "false"
+    },
+    {
+        "name": "Meta data has been included and is appropriate?",
+        "status": "false"
+    },
+    {
+        "name": "Page titles are descriptive and SEO friendly?",
+        "status": "false"
+    },
+    {
+        "name": "Title attributes are appropriate and SEO friendly?",
+        "status": "false"
+    },
+    {
+        "name": "Favicon has been created and displays correctly?",
+        "status": "false"
+    },
+    {
+        "name": "Footer includes copyright and link to site creator?",
+        "status": "false"
+    },
+    {
+        "name": "XML sitemap has been generated?",
+        "status": "false"
+    },
+    {
+        "name": "HTML has passed validation?",
+        "status": "false"
+    },
+    {
+        "name": "CSS has passed validation?",
+        "status": "false"
+    },
+    {
+        "name": "There are no broken links?",
+        "status": "false"
+    },
+    {
+        "name": "Javascript is error free?",
+        "status": "false"
+    },
+    {
+        "name": "Displays & functions correctly in IE9 & 10?",
+        "status": "false"
+    },
+    {
+        "name": "Displays & functions correctly in Firefox (Mac & PC)?",
+        "status": "false"
+    },
+    {
+        "name": "Displays & functions correctly in Chrome (Mac & PC)?",
+        "status": "false"
+    },
+    {
+        "name": "Displays & functions correctly in Safari (Mac & PC)?",
+        "status": "false"
+    },
+    {
+        "name": "Displays & functions correctly in Opera (Mac & PC)?",
+        "status": "false"
+    },
+    {
+        "name": "Displays & functions correctly on all screen sizes?",
+        "status": "false"
+    },
+    {
+        "name": "Forms have been tested and processed correctly?",
+        "status": "false"
+    },
+    {
+        "name": "Required form fields have been tested?",
+        "status": "false"
+    },
+    {
+        "name": "Forms send to correct recipient?",
+        "status": "false"
+    },
+    {
+        "name": "Web statistics package installed and operational?",
+        "status": "false"
+    },
+    {
+        "name": "404 page exists and informative?",
+        "status": "false"
+    }
+]

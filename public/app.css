@@ -1,0 +1,93 @@
+body {
+  margin: 0 auto 20px;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.projectTitle {
+  text-transform: uppercase;
+  font-size: 22px;
+  background-color: tomato;
+  color: white;
+  padding: 50px 0 5px 10%;
+  margin: 0;
+  font-weight: 600;
+  position: fixed;
+  width: 100%;
+}
+
+.taskForm, .taskList {
+  margin: 0 10%;
+}
+
+.taskForm {
+  margin-bottom: 30px;
+  padding-top: 115px;
+}
+
+.newTaskButton, .newTaskBox {
+  padding: 18px 10px;
+  border: none;
+  background: rgba(0,0,0,0);
+  border-bottom: 1px solid tomato;
+  text-transform: uppercase;
+}
+
+.newTaskBox {
+  display: inline;
+  width: 80%;
+}
+
+.newTaskBox:hover, .newTaskBox:active, .newTaskBox:focus {
+  outline: none;
+}
+
+.newTaskButton {
+  display: inline;
+  width: 20%;
+  border-top: 1px solid tomato;
+  border-right: 1px solid tomato;
+  cursor: pointer;
+}
+
+.newTaskButton:hover {
+  background: -moz-linear-gradient(left, rgba(255,99,71,0) 0%, #ff6347 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(255,99,71,0)), color-stop(100%,#ff6347)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left, rgba(255,99,71,0) 0%,#ff6347 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left, rgba(255,99,71,0) 0%,#ff6347 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(left, rgba(255,99,71,0) 0%,#ff6347 100%); /* IE10+ */
+  background: linear-gradient(to right, rgba(255,99,71,0) 0%,#ff6347 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='rgba(255,99,71,0)', endColorstr='#ff6347',GradientType=1 ); /* IE6-9 */
+}
+
+
+
+
+/*tasks*/
+
+.task {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  width: 100%;
+  -webkit-align-items: baseline;
+  align-items: baseline;
+  border-bottom: 1px solid tomato;
+}
+
+.task h2 {
+  font-weight: 300;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.task h2.complete {
+  color: rgba(0,0,0,0.25);
+  font-size: 12px;
+  padding-left: 70%;
+}
+
+input[type="checkbox"] {
+  border: none;
+  background-color: tomato;
+}

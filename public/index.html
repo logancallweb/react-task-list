@@ -43,8 +43,13 @@
         }.bind(this)
       });
     },
+    handelTaskUpdate: function(newStatus) {
+      console.log(newStatus);
+    },
     getInitialState: function() {
-      return{data: []};
+      return{
+        data: []
+      };
     },
     componentDidMount: function() {
       this.loadTasksFromServer();
@@ -55,7 +60,7 @@
         <div className="taskBox">
           <h1 className="projectTitle">Website Pre-Launch Task List</h1>
           <TaskForm onTaskSubmit={this.handleTaskSubmit} />
-          <TaskList data={this.state.data} />
+          <TaskList data={this.state.data} onStatusUpdate={this.handelTaskUpdate}/>
         </div>
       );
     }
@@ -63,9 +68,10 @@
 
   var TaskList = React.createClass({
     render: function() {
+      var grandOnStatusUpdate = this.props.onStatusUpdate;
       var taskNodes = this.props.data.map(function (task) {
         return (
-          <Task name={task.name} status={task.status}></Task>
+          <Task name={task.name} status={task.status} onStatusUpdate={grandOnStatusUpdate}></Task>
         );
       });
       return (
@@ -77,27 +83,22 @@
   });
 
   var Task = React.createClass({
-    getInitialState: function() {
-      return {
-        checked: this.props.status,
-        taskStatusClass: "incomplete"
-      }
-    },
-    statusChange: function(event) {
-      this.setState({checked: event.target.checked});//this sets the state of the element to match the state of the element using the onChange method  
-      this.state.checked = event.target.checked;
-
-      if(this.state.checked === true) {
-        this.setState({taskStatusClass: "complete"});
+    statusChange: function(e) {
+      e.preventDefault();
+      if (this.props.status === "incomplete") {
+        this.props.status = "complete";
       } else {
-        this.setState({taskStatusClass: "incomplete"});
+        this.props.status = "incomplete";
       }
+      this.props.onStatusUpdate({status: this.props.status});
     },
     render: function() {
       return (
         <div className="task">
-          <h2 className={this.state.taskStatusClass} >{this.props.name}</h2>
-          <form><input type="checkbox" className="taskCheckBox" name="status" onChange={this.statusChange} /></form>
+          <h2 className={this.props.status} >{this.props.name}</h2>
+          <form onSubmit={this.statusChange}>
+           <button type="submit" className="taskCheckBox">{this.props.status}</button>
+          </form>
         </div>
       );
     }
@@ -107,7 +108,7 @@
     handleSubmit: function(e) {
       e.preventDefault();
       var name = React.findDOMNode(this.refs.name).value.trim();
-      var defaultStatus = false;
+      var defaultStatus = "incomplete";
       if (!name) {
         return;
       }

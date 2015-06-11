@@ -43,9 +43,6 @@
         }.bind(this)
       });
     },
-    handelTaskUpdate: function(newStatus) {
-      console.log(newStatus);
-    },
     getInitialState: function() {
       return{
         data: []
@@ -59,19 +56,41 @@
       return (
         <div className="taskBox">
           <h1 className="projectTitle">Website Pre-Launch Task List</h1>
-          <TaskForm onTaskSubmit={this.handleTaskSubmit} />
-          <TaskList data={this.state.data} onStatusUpdate={this.handelTaskUpdate}/>
+          <TaskForm onTaskSubmit={this.handleTaskSubmit} data={this.state.data}/>
+          <TaskList data={this.state.data}/>
         </div>
       );
     }
   });
 
   var TaskList = React.createClass({
+    // getInitialState: function() {
+    //   return {
+    //
+    //   }
+    // },
+    handelTaskUpdate: function(newStatus) {
+      console.log(this.props);
+      // console.log(this.props.url);
+      // $.ajax({
+      //   url: this.props.url,
+      //   dataType: 'json',
+      //   type: 'POST',
+      //   data: newStatus,
+      //   success: function(data) {
+      //     console.log(data[newStatus]);
+      //     // this.setState({data: data});
+      //   }.bind(this),
+      //   error: function(xhr, status, err) {
+      //     console.error(this.props.url, status, err.toString());
+      //   }.bind(this)
+      // });
+    },
     render: function() {
-      var grandOnStatusUpdate = this.props.onStatusUpdate;
+      var getHandelTaskUpdate = this.handelTaskUpdate;
       var taskNodes = this.props.data.map(function (task) {
         return (
-          <Task name={task.name} status={task.status} onStatusUpdate={grandOnStatusUpdate}></Task>
+          <Task name={task.name} status={task.status} id={task.id} key={task.id} onStatusUpdate={getHandelTaskUpdate}></Task>
         );
       });
       return (
@@ -90,6 +109,7 @@
       } else {
         this.props.status = "incomplete";
       }
+      // console.log(this);
       this.props.onStatusUpdate({status: this.props.status});
     },
     render: function() {
@@ -109,10 +129,11 @@
       e.preventDefault();
       var name = React.findDOMNode(this.refs.name).value.trim();
       var defaultStatus = "incomplete";
+      var newID = this.props.data.length += 1;
       if (!name) {
         return;
       }
-      this.props.onTaskSubmit({name: name, status: defaultStatus});
+      this.props.onTaskSubmit({name: name, status: defaultStatus, id: newID});
       React.findDOMNode(this.refs.name).value = '';
     },
     render: function() {

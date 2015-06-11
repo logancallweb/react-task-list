@@ -1,98 +1,104 @@
 [
     {
         "name": "All text free from spelling errors?",
-        "status": "Incomplete"
+        "status": "incomplete"
     },
     {
         "name": "Content has been placed consistently?",
-        "status": "Incomplete"
+        "status": "incomplete"
     },
     {
         "name": "Page & Content formatting has been tested?",
-        "status": "Incomplete"
+        "status": "incomplete"
     },
     {
         "name": "Meta data has been included and is appropriate?",
-        "status": "Incomplete"
+        "status": "incomplete"
     },
     {
         "name": "Page titles are descriptive and SEO friendly?",
-        "status": "Incomplete"
+        "status": "incomplete"
     },
     {
         "name": "Title attributes are appropriate and SEO friendly?",
-        "status": "Incomplete"
+        "status": "incomplete"
     },
     {
         "name": "Favicon has been created and displays correctly?",
-        "status": "Incomplete"
+        "status": "incomplete"
     },
     {
         "name": "Footer includes copyright and link to site creator?",
-        "status": "Incomplete"
+        "status": "incomplete"
     },
     {
         "name": "XML sitemap has been generated?",
-        "status": "Incomplete"
+        "status": "incomplete"
     },
     {
         "name": "HTML has passed validation?",
-        "status": "Incomplete"
+        "status": "incomplete"
     },
     {
         "name": "CSS has passed validation?",
-        "status": "Incomplete"
+        "status": "incomplete"
     },
     {
         "name": "There are no broken links?",
-        "status": "Incomplete"
+        "status": "incomplete"
     },
     {
         "name": "Javascript is error free?",
-        "status": "Incomplete"
+        "status": "incomplete"
     },
     {
         "name": "Displays & functions correctly in IE9 & 10?",
-        "status": "Incomplete"
+        "status": "incomplete"
     },
     {
         "name": "Displays & functions correctly in Firefox (Mac & PC)?",
-        "status": "Incomplete"
+        "status": "incomplete"
     },
     {
         "name": "Displays & functions correctly in Chrome (Mac & PC)?",
-        "status": "Incomplete"
+        "status": "incomplete"
     },
     {
         "name": "Displays & functions correctly in Safari (Mac & PC)?",
-        "status": "Incomplete"
+        "status": "incomplete"
     },
     {
         "name": "Displays & functions correctly in Opera (Mac & PC)?",
-        "status": "Incomplete"
+        "status": "incomplete"
     },
     {
         "name": "Displays & functions correctly on all screen sizes?",
-        "status": "Incomplete"
+        "status": "incomplete"
     },
     {
         "name": "Forms have been tested and processed correctly?",
-        "status": "Incomplete"
+        "status": "incomplete"
     },
     {
         "name": "Required form fields have been tested?",
-        "status": "Incomplete"
+        "status": "incomplete"
     },
     {
         "name": "Forms send to correct recipient?",
-        "status": "Incomplete"
+        "status": "incomplete"
     },
     {
         "name": "Web statistics package installed and operational?",
-        "status": "Incomplete"
+        "status": "incomplete"
     },
     {
         "name": "404 page exists and informative?",
-        "status": "Incomplete"
+        "status": "incomplete"
+    },
+    {
+        "status": "complete"
+    },
+    {
+        "status": "incomplete"
     }
 ]

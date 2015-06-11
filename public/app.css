@@ -39,7 +39,7 @@ body {
   width: 80%;
 }
 
-.newTaskBox:hover, .newTaskBox:active, .newTaskBox:focus {
+.newTaskBox:hover, .newTaskBox:active, .newTaskBox:focus, .newTaskButton:active, .newTaskButton:hover, .newTaskButton:focus {
   outline: none;
 }
 
@@ -96,7 +96,3 @@ body {
   font-size: 12px;
   padding-left: 15%;
 }
-
-
-
-

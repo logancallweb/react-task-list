@@ -69,8 +69,10 @@
     //
     //   }
     // },
-    handelTaskUpdate: function(newStatus) {
-      console.log(this.props);
+    handelTaskUpdate: function(task) {
+      var tasks = this.state.data;
+      var newTask = loop through tasks and update the one;
+      this.setState({data: newTask});
       // console.log(this.props.url);
       // $.ajax({
       //   url: this.props.url,
@@ -88,6 +90,7 @@
     },
     render: function() {
       var getHandelTaskUpdate = this.handelTaskUpdate;
+      var data = this.props.data;
       var taskNodes = this.props.data.map(function (task) {
         return (
           <Task name={task.name} status={task.status} id={task.id} key={task.id} onStatusUpdate={getHandelTaskUpdate}></Task>
@@ -109,8 +112,10 @@
       } else {
         this.props.status = "incomplete";
       }
-      // console.log(this);
-      this.props.onStatusUpdate({status: this.props.status});
+      // console.log(this.props.status);
+      // console.log(this.props.task);
+      console.log(this.props);
+      this.props.onStatusUpdate(this.props);
     },
     render: function() {
       return (

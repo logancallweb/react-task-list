@@ -1,7 +1,7 @@
 [
     {
         "name": "All text free from spelling errors?",
-        "status": "incomplete",
+        "status": "complete",
         "id": 1
     },
     {
@@ -118,5 +118,10 @@
         "name": "404 page exists and informative?",
         "status": "incomplete",
         "id": 24
+    },
+    {
+        "name": "new task ya!",
+        "status": "incomplete",
+        "id": "25"
     }
 ]

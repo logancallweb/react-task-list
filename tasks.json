@@ -94,5 +94,9 @@
     {
         "name": "404 page exists and informative?",
         "status": "false"
+    },
+    {
+        "name": "This is a new task",
+        "status": "false"
     }
 ]

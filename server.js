@@ -42,6 +42,7 @@ app.post('/tasks.json', function(req, res) {
 });
 
 app.post('/update.json', function(req, res) {
+  console.log(res);
   var tasks = JSON.stringify(req.body);
   fs.writeFile('tasks.json', tasks, function(err) {
     res.setHeader('Content-Type', 'application/json');
@@ -51,12 +52,19 @@ app.post('/update.json', function(req, res) {
 });
 
 app.post('/delete-task.json', function(req, res) {
+  var deletedTask = '';
   var tasks = JSON.stringify(req.body);
+  console.log(req);
   fs.writeFile('tasks.json', tasks, function(err) {
     res.setHeader('Content-Type', 'application/json');
     res.setHeader('Cache-Control', 'no-cache');
     res.send(tasks);
   });
+  fs.writeFile('delete-tasks.json', deletedTask, function(err) {
+    res.setHeader('Content-Type', 'application/json');
+    res.setHeader('Cache-Control', 'no-cache');
+    res.send(deletedTask);
+  })
 });
 
 app.listen(app.get('port'), function() {

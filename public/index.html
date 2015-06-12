@@ -114,9 +114,22 @@
     render: function() {
       return (
         <div className="taskBox">
-          <h1 className="projectTitle">Website Pre-Launch Task List</h1>
+          <TaskHeader onTaskDelete={this.handleTaskDelete} />
           <TaskForm onTaskSubmit={this.handleTaskSubmit} data={this.state.data} onMakeId={this.handleMakingId}/>
-          <TaskList data={this.state.data} onTaskUpdate={this.handleTaskUpdate} onTaskDelete={this.handleTaskDelete}/>
+          <TaskList data={this.state.data} onTaskUpdate={this.handleTaskUpdate}/>
+        </div>
+      );
+    }
+  });
+
+  var TaskHeader = React.createClass({
+    render: function() {
+      return (
+        <div className="header">
+          <h1 className="projectTitle">Website Pre-Launch Task List</h1>
+          <form onSubmit={this.props.onTaskDelete} className="deleteTaskForm">
+           <button type="submit" className="deleteTaskButton"></button>
+          </form>
         </div>
       );
     }
@@ -125,12 +138,10 @@
   var TaskList = React.createClass({
     render: function() {
       var getOnTaskUpdate = this.props.onTaskUpdate;
-      var getOnTaskDelete = this.props.onTaskDelete;
-      var get
       var data = this.props.data;
       var taskNodes = this.props.data.map(function (task) {
         return (
-          <Task name={task.name} status={task.status} id={task.id} key={task.id} onTaskUpdate={getOnTaskUpdate} onTaskDelete={getOnTaskDelete}></Task>
+          <Task name={task.name} status={task.status} id={task.id} key={task.id} onTaskUpdate={getOnTaskUpdate}></Task>
         );
       });
       return (
@@ -151,22 +162,13 @@
       }
       this.props.onTaskUpdate(this.props);
     },
-    deleteTask: function(e) {
-      e.preventDefault();
-      this.props.onTaskDelete(this.props);
-    },
     render: function() {
       return (
         <div className="task">
           <h2 className={this.props.status} >{this.props.name}</h2>
-          <div className="taskButtons">
-            <form onSubmit={this.statusChange} className="updateTaskForm">
-             <button type="submit" className="updateTaskButton">{this.props.status}</button>
-            </form>
-            <form onSubmit={this.deleteTask} className="deleteTaskForm">
-             <button type="submit" className="deleteTaskButton">delete</button>
-            </form>
-          </div>
+          <form onSubmit={this.statusChange} className="updateTaskForm">
+           <button type="submit" className="updateTaskButton">{this.props.status}</button>
+          </form>
         </div>
       );
     }

@@ -58,7 +58,8 @@
         url: this.props.url,
         dataType: 'json',
         type: 'POST',
-        data: {tasks},
+        contentType: "application/json",
+        data: JSON.stringify(tasks),
         success: function(data) {
           this.setState({data: tasks});
         }.bind(this),

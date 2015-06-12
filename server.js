@@ -41,6 +41,16 @@ app.post('/tasks.json', function(req, res) {
   });
 });
 
+//create end point to tell the server to edit a task
+app.post('/update.json', function(req, res) {
+  var tasks = JSON.stringify(req.body).replace("},","},\n");
+  fs.writeFile('tasks.json', tasks, function(err) {
+    res.setHeader('Content-Type', 'application/json');
+    res.setHeader('Cache-Control', 'no-cache');
+    res.send(tasks);
+  });
+});
+
 
 app.listen(app.get('port'), function() {
   console.log('Server started: http://localhost:' + app.get('port') + '/');

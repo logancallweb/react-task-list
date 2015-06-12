@@ -26,11 +26,19 @@
         }.bind(this)
       });
     },
+    handleMakingId: function () {
+      var id = "";
+      var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        for( var i=0; i < 25; i++ )
+          id += possible.charAt(Math.floor(Math.random() * possible.length));
+
+        return id;
+    },
     handleTaskSubmit: function(task) {
       var tasks = this.state.data;
       var newTask = tasks.concat([task]);
       this.setState({data: newTask});
-      console.log(this.state.data);
       $.ajax({
         url: this.props.url,
         dataType: 'json',
@@ -107,7 +115,7 @@
       return (
         <div className="taskBox">
           <h1 className="projectTitle">Website Pre-Launch Task List</h1>
-          <TaskForm onTaskSubmit={this.handleTaskSubmit} data={this.state.data}/>
+          <TaskForm onTaskSubmit={this.handleTaskSubmit} data={this.state.data} onMakeId={this.handleMakingId}/>
           <TaskList data={this.state.data} onTaskUpdate={this.handleTaskUpdate} onTaskDelete={this.handleTaskDelete}/>
         </div>
       );
@@ -118,6 +126,7 @@
     render: function() {
       var getOnTaskUpdate = this.props.onTaskUpdate;
       var getOnTaskDelete = this.props.onTaskDelete;
+      var get
       var data = this.props.data;
       var taskNodes = this.props.data.map(function (task) {
         return (
@@ -168,8 +177,7 @@
       e.preventDefault();
       var name = React.findDOMNode(this.refs.name).value.trim();
       var defaultStatus = "incomplete";
-      var newID = (this.props.data.length += 1).toString();
-      console.log(newID);
+      var newID = this.props.onMakeId();
       if (!name) {
         return;
       }

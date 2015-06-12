@@ -69,6 +69,31 @@
         }.bind(this)
       });
     },
+    handleTaskDelete: function(task) {
+      var tasks = this.state.data;
+      var updateTasks = (function(){
+        for ( var i = 0; i < tasks.length; i++) {
+          if( tasks[i].id == task.id ) {
+            tasks.splice(i, 1);
+            return tasks;
+          }
+        }
+      })();
+      this.setState({data: tasks});
+      $.ajax({
+        url: this.props.deleteEndPoint,
+        dataType: 'json',
+        type: 'POST',
+        contentType: "application/json",
+        data: JSON.stringify(tasks),
+        success: function(data) {
+          this.setState({data: tasks});
+        }.bind(this),
+        error: function(xhr, status, err) {
+          console.error(this.props.url, status, err.toString());
+        }.bind(this)
+      });
+    },
     getInitialState: function() {
       return{
         data: []
@@ -83,7 +108,7 @@
         <div className="taskBox">
           <h1 className="projectTitle">Website Pre-Launch Task List</h1>
           <TaskForm onTaskSubmit={this.handleTaskSubmit} data={this.state.data}/>
-          <TaskList data={this.state.data} onTaskUpdate={this.handleTaskUpdate}/>
+          <TaskList data={this.state.data} onTaskUpdate={this.handleTaskUpdate} onTaskDelete={this.handleTaskDelete}/>
         </div>
       );
     }
@@ -92,10 +117,11 @@
   var TaskList = React.createClass({
     render: function() {
       var getOnTaskUpdate = this.props.onTaskUpdate;
+      var getOnTaskDelete = this.props.onTaskDelete;
       var data = this.props.data;
       var taskNodes = this.props.data.map(function (task) {
         return (
-          <Task name={task.name} status={task.status} id={task.id} key={task.id} onTaskUpdate={getOnTaskUpdate}></Task>
+          <Task name={task.name} status={task.status} id={task.id} key={task.id} onTaskUpdate={getOnTaskUpdate} onTaskDelete={getOnTaskDelete}></Task>
         );
       });
       return (
@@ -116,13 +142,22 @@
       }
       this.props.onTaskUpdate(this.props);
     },
+    deleteTask: function(e) {
+      e.preventDefault();
+      this.props.onTaskDelete(this.props);
+    },
     render: function() {
       return (
         <div className="task">
           <h2 className={this.props.status} >{this.props.name}</h2>
-          <form onSubmit={this.statusChange}>
-           <button type="submit" className="updateTaskButton">{this.props.status}</button>
-          </form>
+          <div className="taskButtons">
+            <form onSubmit={this.statusChange} className="updateTaskForm">
+             <button type="submit" className="updateTaskButton">{this.props.status}</button>
+            </form>
+            <form onSubmit={this.deleteTask} className="deleteTaskForm">
+             <button type="submit" className="deleteTaskButton">delete</button>
+            </form>
+          </div>
         </div>
       );
     }
@@ -133,7 +168,8 @@
       e.preventDefault();
       var name = React.findDOMNode(this.refs.name).value.trim();
       var defaultStatus = "incomplete";
-      var newID = this.props.data.length += 1;
+      var newID = (this.props.data.length += 1).toString();
+      console.log(newID);
       if (!name) {
         return;
       }
@@ -151,7 +187,7 @@
   });
 
   React.render(
-    <TaskBox url="tasks.json" pollInterval={2000} updateEndPoint='update.json'/>,
+    <TaskBox url="tasks.json" pollInterval={2000} updateEndPoint='update.json' deleteEndPoint='delete-task.json'/>,
     document.getElementById('app')
   );
 

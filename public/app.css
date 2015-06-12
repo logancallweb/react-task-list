@@ -37,13 +37,12 @@ body {
 .newTaskBox {
   display: inline;
   width: 80%;
-  /* transition: 0.3s; */
+  transition: 0.3s;
 }
 
-/* .newTaskBox:focus {
-  font-size: 18px;
+.newTaskBox:focus {
   text-transform: none;
-} */
+}
 
 .newTaskBox:hover, .newTaskBox:active, .newTaskBox:focus, .newTaskButton:active, .newTaskButton:hover, .newTaskButton:focus {
   outline: none;
@@ -101,4 +100,16 @@ body {
   color: rgba(0,0,0,0.25);
   font-size: 12px;
   padding-left: 15%;
+}
+
+.taskButtons {
+  display: flex;
+}
+
+.updateTaskButton {
+  
+}
+
+.deleteTaskButton {
+
 }

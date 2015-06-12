@@ -37,7 +37,13 @@ body {
 .newTaskBox {
   display: inline;
   width: 80%;
+  /* transition: 0.3s; */
 }
+
+/* .newTaskBox:focus {
+  font-size: 18px;
+  text-transform: none;
+} */
 
 .newTaskBox:hover, .newTaskBox:active, .newTaskBox:focus, .newTaskButton:active, .newTaskButton:hover, .newTaskButton:focus {
   outline: none;

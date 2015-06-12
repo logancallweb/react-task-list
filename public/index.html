@@ -43,6 +43,30 @@
         }.bind(this)
       });
     },
+    handleTaskUpdate: function(task) {
+      var tasks = this.state.data;
+      var updateTasks = (function(){
+        for ( var i = 0; i < tasks.length; i++) {
+          if( tasks[i].id == task.id ) {
+            tasks[i].status = task.status;
+            return tasks;
+          }
+        }
+      })();
+      this.setState({data: tasks});
+      $.ajax({
+        url: this.props.url,
+        dataType: 'json',
+        type: 'POST',
+        data: {tasks},
+        success: function(data) {
+          this.setState({data: tasks});
+        }.bind(this),
+        error: function(xhr, status, err) {
+          console.error(this.props.url, status, err.toString());
+        }.bind(this)
+      });
+    },
     getInitialState: function() {
       return{
         data: []
@@ -57,51 +81,19 @@
         <div className="taskBox">
           <h1 className="projectTitle">Website Pre-Launch Task List</h1>
           <TaskForm onTaskSubmit={this.handleTaskSubmit} data={this.state.data}/>
-          <TaskList data={this.state.data}/>
+          <TaskList data={this.state.data} onTaskUpdate={this.handleTaskUpdate}/>
         </div>
       );
     }
   });
 
   var TaskList = React.createClass({
-    // getInitialState: function() {
-    //   return {
-    //
-    //   }
-    // },
-    handelTaskUpdate: function(task) {
-      var tasks = this.props.data;
-      var updateTasks = (function(){
-        // console.log(tasks);
-        for ( var i = 0; i < tasks.length; i++) {
-          // console.log(tasks[0].id);
-          if( tasks[i].id == task.id ) {
-            tasks[i].status = task.status;
-            return tasks;
-          }
-        }
-      })();
-      this.setState({data: tasks});
-      $.ajax({
-        url: this.props.url,
-        dataType: 'json',
-        type: 'POST',
-        data: tasks,
-        success: function(data) {
-          this.setState({data: tasks});
-        }.bind(this),
-        error: function(xhr, status, err) {
-          console.log(this.props.url);
-          console.error(this.props.url, status, err.toString());
-        }.bind(this)
-      });
-    },
     render: function() {
-      var getHandelTaskUpdate = this.handelTaskUpdate;
+      var getOnTaskUpdate = this.props.onTaskUpdate;
       var data = this.props.data;
       var taskNodes = this.props.data.map(function (task) {
         return (
-          <Task name={task.name} status={task.status} id={task.id} key={task.id} onStatusUpdate={getHandelTaskUpdate}></Task>
+          <Task name={task.name} status={task.status} id={task.id} key={task.id} onTaskUpdate={getOnTaskUpdate}></Task>
         );
       });
       return (
@@ -120,10 +112,7 @@
       } else {
         this.props.status = "incomplete";
       }
-      // console.log(this.props.status);
-      // console.log(this.props.task);
-      // console.log(this.props);
-      this.props.onStatusUpdate(this.props);
+      this.props.onTaskUpdate(this.props);
     },
     render: function() {
       return (

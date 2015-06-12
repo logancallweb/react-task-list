@@ -70,23 +70,31 @@
     //   }
     // },
     handelTaskUpdate: function(task) {
-      var tasks = this.state.data;
-      var newTask = loop through tasks and update the one;
-      this.setState({data: newTask});
-      // console.log(this.props.url);
-      // $.ajax({
-      //   url: this.props.url,
-      //   dataType: 'json',
-      //   type: 'POST',
-      //   data: newStatus,
-      //   success: function(data) {
-      //     console.log(data[newStatus]);
-      //     // this.setState({data: data});
-      //   }.bind(this),
-      //   error: function(xhr, status, err) {
-      //     console.error(this.props.url, status, err.toString());
-      //   }.bind(this)
-      // });
+      var tasks = this.props.data;
+      var updateTasks = (function(){
+        // console.log(tasks);
+        for ( var i = 0; i < tasks.length; i++) {
+          // console.log(tasks[0].id);
+          if( tasks[i].id == task.id ) {
+            tasks[i].status = task.status;
+            return tasks;
+          }
+        }
+      })();
+      this.setState({data: tasks});
+      $.ajax({
+        url: this.props.url,
+        dataType: 'json',
+        type: 'POST',
+        data: tasks,
+        success: function(data) {
+          this.setState({data: tasks});
+        }.bind(this),
+        error: function(xhr, status, err) {
+          console.log(this.props.url);
+          console.error(this.props.url, status, err.toString());
+        }.bind(this)
+      });
     },
     render: function() {
       var getHandelTaskUpdate = this.handelTaskUpdate;
@@ -114,7 +122,7 @@
       }
       // console.log(this.props.status);
       // console.log(this.props.task);
-      console.log(this.props);
+      // console.log(this.props);
       this.props.onStatusUpdate(this.props);
     },
     render: function() {

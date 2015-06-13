@@ -77,31 +77,6 @@
         }.bind(this)
       });
     },
-    handleTaskDelete: function(task) {
-      var tasks = this.state.data;
-      var updateTasks = (function(){
-        for ( var i = 0; i < tasks.length; i++) {
-          if( tasks[i].id == task.id ) {
-            tasks.splice(i, 1);
-            return tasks;
-          }
-        }
-      })();
-      this.setState({data: tasks});
-      $.ajax({
-        url: this.props.deleteEndPoint,
-        dataType: 'json',
-        type: 'POST',
-        contentType: "application/json",
-        data: JSON.stringify(tasks),
-        success: function(data) {
-          this.setState({data: tasks});
-        }.bind(this),
-        error: function(xhr, status, err) {
-          console.error(this.props.url, status, err.toString());
-        }.bind(this)
-      });
-    },
     getInitialState: function() {
       return{
         data: []
@@ -114,7 +89,7 @@
     render: function() {
       return (
         <div className="taskBox">
-          <TaskHeader onTaskDelete={this.handleTaskDelete} />
+          <TaskHeader/>
           <TaskForm onTaskSubmit={this.handleTaskSubmit} data={this.state.data} onMakeId={this.handleMakingId}/>
           <TaskList data={this.state.data} onTaskUpdate={this.handleTaskUpdate}/>
         </div>
@@ -127,9 +102,6 @@
       return (
         <div className="header">
           <h1 className="projectTitle">Website Pre-Launch Task List</h1>
-          <form onSubmit={this.props.onTaskDelete} className="deleteTaskForm">
-           <button type="submit" className="deleteTaskButton"></button>
-          </form>
         </div>
       );
     }
